@@ -1,3 +1,4 @@
+import os
 import argparse
 
 from diffuse.train import TrainingConfig
@@ -10,6 +11,8 @@ def parse() -> TrainingConfig:
     parser.add_argument("--n_epochs", "-e", type=int, default=5, help="Number of epochs to train for")
 
     args = parser.parse_args()
+
+    os.makedirs("out", exist_ok=True)
 
     return TrainingConfig.from_args(args)
 
